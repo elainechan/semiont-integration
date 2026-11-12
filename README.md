@@ -27,14 +27,7 @@ uv run pyright
 uv run pytest
 ```
 
-Unit tests need no stack. Integration tests run locally against a Semiont stack; see the runbook.
-
-## Docs
-
-- [Local Test Runbook](docs/semiont-integration%20Local%20Test%20Runbook.md)
-- [Stage 1 PR Plan](docs/semiont-integration%20Stage%201%20PR%20Plan.md)
-- [Stage 1 Implementation Plan](docs/Stage%201%20Implementation%20Plan%20Google%20Drive%20Ingestion%20Pipeline.md)
-- [Semiont Connectors Integration Plan](docs/Semiont%20Connectors%20Integration%20Plan.md)
+Unit tests need no stack. Integration tests run locally against a Semiont stack.
 
 ## License
 

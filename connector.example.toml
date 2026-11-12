@@ -1,0 +1,20 @@
+# Copy to connector.toml (git-ignored) and fill in the real drive ids.
+# One [[mapping]] per Shared Drive: each drive syncs into its own KB.
+
+state_dir = ".state"
+
+[google]
+credentials = ".state/google-oauth-client.json"   # option B: the service-account key
+# impersonate = "ingest@<tenant>"                 # option B only
+
+[[mapping]]
+drive_id = "<Litigation drive id>"
+kb_id = "acme-litigation"
+gateway = "http://localhost:4000"
+entity_types = ["Person", "Organization", "Court", "Judge", "Case"]
+
+[[mapping]]
+drive_id = "<Corporate drive id>"
+kb_id = "acme-corporate"
+gateway = "http://localhost:4001"
+entity_types = ["Person", "Organization", "Contract", "Party"]

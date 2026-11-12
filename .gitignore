@@ -1,0 +1,36 @@
+# Local state: sign-ins, Google token, SQLite state
+.state/
+
+# Local config with real drive ids; connector.example.toml is the committed template
+connector.toml
+
+# Planning docs, kept private for now
+docs/Semiont Connectors Integration Plan.md
+docs/Stage 1 Implementation Plan Google Drive Ingestion Pipeline.md
+docs/semiont-integration Local Test Runbook.md
+docs/semiont-integration Stage 1 PR Plan.md
+
+# Credentials
+*credentials*.json
+client_secret*.json
+*oauth-client*.json
+*service-account*.json
+*token*.json
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+build/
+dist/
+*.egg-info/
+
+# Tool caches
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# OS
+.DS_Store

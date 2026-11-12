@@ -1,0 +1,65 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "semiont-integration"
+version = "0.1.0"
+description = "Connectors that sync external content sources into Semiont knowledge bases"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "Apache-2.0"
+# Pinned to the stack's version: upgrade both together, never one alone.
+dependencies = ["semiont==0.7.2"]
+
+[project.optional-dependencies]
+gdrive = ["google-api-python-client", "google-auth", "google-auth-oauthlib"]
+
+[project.scripts]
+semiont-integration = "semiont_integration.cli:main"
+
+# Pinned the way the semiont SDK pins its own: checkers and formatter exact.
+[dependency-groups]
+dev = [
+    "mypy==2.4.1",
+    "pyright==1.1.414",
+    "pytest>=9.1,<10",
+    "pytest-asyncio>=1.4,<2",
+    "ruff==0.17.3",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/semiont_integration"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+addopts = ["--strict-markers", "--strict-config", "-ra"]
+
+[tool.ruff]
+line-length = 140
+# Code in the plan docs is illustrative, not checked.
+extend-exclude = ["*.md"]
+
+# The SDK's rule set, so code here reads the same as `semiont`.
+[tool.ruff.lint]
+select = ["ANN", "ASYNC", "B", "C4", "E", "F", "I", "PGH", "PT", "RUF", "SIM", "TID", "UP", "W"]
+
+[tool.mypy]
+python_version = "3.12"
+files = ["src", "tests"]
+strict = true
+plugins = ["pydantic.mypy"]
+warn_unreachable = true
+enable_error_code = ["explicit-override", "ignore-without-code", "possibly-undefined", "redundant-expr", "truthy-bool"]
+
+[tool.pydantic-mypy]
+init_typed = true
+init_forbid_extra = true
+warn_required_dynamic_aliases = true
+
+[tool.pyright]
+pythonVersion = "3.12"
+include = ["src", "tests"]
+typeCheckingMode = "strict"
