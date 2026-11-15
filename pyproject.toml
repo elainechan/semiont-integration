@@ -10,7 +10,12 @@ readme = "README.md"
 requires-python = ">=3.12"
 license = "Apache-2.0"
 # Pinned to the stack's version: upgrade both together, never one alone.
-dependencies = ["semiont==0.7.2"]
+dependencies = [
+    "semiont==0.7.2",
+    # The SDK's own ranges: config models are pydantic, and the session's HTTP client is httpx.
+    "httpx>=0.28,<1",
+    "pydantic>=2.12,<3",
+]
 
 [project.optional-dependencies]
 gdrive = ["google-api-python-client", "google-auth", "google-auth-oauthlib"]
@@ -48,7 +53,7 @@ select = ["ANN", "ASYNC", "B", "C4", "E", "F", "I", "PGH", "PT", "RUF", "SIM", "
 
 [tool.mypy]
 python_version = "3.12"
-files = ["src", "tests"]
+files = ["src", "tests", "scripts"]
 strict = true
 plugins = ["pydantic.mypy"]
 warn_unreachable = true
@@ -61,5 +66,5 @@ warn_required_dynamic_aliases = true
 
 [tool.pyright]
 pythonVersion = "3.12"
-include = ["src", "tests"]
+include = ["src", "tests", "scripts"]
 typeCheckingMode = "strict"

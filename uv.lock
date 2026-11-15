@@ -1076,6 +1076,8 @@ name = "semiont-integration"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "httpx" },
+    { name = "pydantic" },
     { name = "semiont" },
 ]
 
@@ -1100,6 +1102,8 @@ requires-dist = [
     { name = "google-api-python-client", marker = "extra == 'gdrive'" },
     { name = "google-auth", marker = "extra == 'gdrive'" },
     { name = "google-auth-oauthlib", marker = "extra == 'gdrive'" },
+    { name = "httpx", specifier = ">=0.28,<1" },
+    { name = "pydantic", specifier = ">=2.12,<3" },
     { name = "semiont", specifier = "==0.7.2" },
 ]
 provides-extras = ["gdrive"]
